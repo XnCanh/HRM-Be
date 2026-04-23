@@ -14,13 +14,9 @@ public interface ContractService {
 
     ContractResponse signContract(Long contractId, ContractSignRequest request);
 
-    ContractResponse sign(Long contractId);
-
     ContractResponse terminateContract(Long contractId, ContractTerminateRequest request);
 
     ContractResponse findById(Long id);
-
-    void expireContractsJob();
 
     PageDTO<ContractResponse> filter(ContractFilter filter, int page, int size);
 

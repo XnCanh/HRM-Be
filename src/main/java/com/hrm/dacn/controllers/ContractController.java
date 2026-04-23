@@ -102,13 +102,14 @@ public class ContractController {
         );
     }
 
-    @PutMapping("/{contractId}/sign")
+    @PostMapping("/{contractId}/sign")
     @Operation(summary = "Ký hợp đồng", description = "Ký hợp đồng bởi nhân viên hoặc nhà tuyển dụng")
     public ResponseEntity<APIResponse<ContractResponse>> signContract(
             @PathVariable Long contractId,
+            @Valid @RequestBody ContractSignRequest request,
             HttpServletRequest httpRequest) {
 
-        ContractResponse response = contractService.sign(contractId);
+        ContractResponse response = contractService.signContract(contractId, request);
         return ResponseEntity.ok(
                 new APIResponse<>(
                         true,
